@@ -45,7 +45,7 @@ const App = () => {
 
 	return (
 		<div className="container">
-			{isLoading ? <Loader /> : <Table contactData={contactData} sortData={sortData} />}
+			{isLoading ? <Loader /> : <Table contactData={contactData} sortData={sortData} directionSort={directionSort} />}
 		</div>
 	);
 }

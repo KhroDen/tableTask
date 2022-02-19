@@ -1,18 +1,43 @@
 import React, { useEffect, useState } from "react";
+import ArrowUp from "../svg/arrowUp";
+import ArrowDown from "../svg/arrowDown";
 
 
 
-const Table = ({ contactData, sortData }) => {
+const Table = ({ contactData, sortData, directionSort }) => {
+
+	const [fieldData, setFieldData] = useState('')
+
+	const Arrow = () => {
+		return (
+			directionSort ? <ArrowUp /> : <ArrowDown />
+		)
+	}
+
+	const fieldSortData = (field) => {
+		sortData(field)
+		setFieldData(field)
+	}
 
 	return (
 		<table className='table'>
 			<thead>
 				<tr>
-					<th onClick={() => { sortData('id') }}>id</th>
-					<th onClick={() => { sortData('firstName') }}>firstName</th>
-					<th onClick={() => { sortData('lastName') }}>lastName</th>
-					<th onClick={() => { sortData('email') }}>email</th>
-					<th onClick={() => { sortData('phone') }}>phone</th>
+					<th onClick={() => { fieldSortData('id') }}>
+						id {fieldData === 'id' ? <Arrow /> : null}
+					</th>
+					<th onClick={() => { fieldSortData('firstName') }}>
+						firstName {fieldData === 'firstName' ? <Arrow /> : null}
+					</th>
+					<th onClick={() => { fieldSortData('lastName') }}>
+						lastName {fieldData === 'lastName' ? <Arrow /> : null}
+					</th>
+					<th onClick={() => { fieldSortData('email') }}>
+						email {fieldData === 'email' ? <Arrow /> : null}
+					</th>
+					<th onClick={() => { fieldSortData('phone') }}>
+						phone {fieldData === 'phone' ? <Arrow /> : null}
+					</th>
 				</tr>
 			</thead>
 			<tbody>

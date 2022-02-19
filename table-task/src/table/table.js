@@ -4,7 +4,7 @@ import ArrowDown from "../svg/arrowDown";
 
 
 
-const Table = ({ contactData, sortData, directionSort }) => {
+const Table = ({ contactData, sortData, directionSort, detailRow }) => {
 
 	const [fieldData, setFieldData] = useState('')
 
@@ -43,7 +43,7 @@ const Table = ({ contactData, sortData, directionSort }) => {
 			<tbody>
 				{contactData.map(
 					(item => (
-						<tr key={item.phone}>
+						<tr key={item.phone} onClick={() => detailRow(item)}>
 							<td>{item.id}</td>
 							<td>{item.firstName}</td>
 							<td>{item.lastName}</td>
